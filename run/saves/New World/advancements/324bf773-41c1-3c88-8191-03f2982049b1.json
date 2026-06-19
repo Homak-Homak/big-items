@@ -1,0 +1,45 @@
+{
+  "minecraft:recipes/food/cake": {
+    "criteria": {
+      "has_egg": "2026-06-18 11:58:30 +0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/snow": {
+    "criteria": {
+      "has_snowball": "2026-06-18 11:58:32 +0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/crafting_table": {
+    "criteria": {
+      "unlock_right_away": "2026-06-18 11:50:18 +0300"
+    },
+    "done": true
+  },
+  "minecraft:adventure/root": {
+    "criteria": {
+      "killed_something": "2026-06-18 11:58:05 +0300"
+    },
+    "done": true
+  },
+  "minecraft:adventure/adventuring_time": {
+    "criteria": {
+      "minecraft:plains": "2026-06-18 11:50:19 +0300"
+    },
+    "done": false
+  },
+  "minecraft:recipes/combat/mace": {
+    "criteria": {
+      "has_heavy_core": "2026-06-18 11:58:26 +0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/snow_block": {
+    "criteria": {
+      "has_snowball": "2026-06-18 11:58:32 +0300"
+    },
+    "done": true
+  },
+  "DataVersion": 3955
+}

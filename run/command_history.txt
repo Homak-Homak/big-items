@@ -1,0 +1,2 @@
+/summon minecraft:iron_golem
+/kill @e[type=!minecraft:player]

@@ -1,0 +1,27 @@
+{
+	"schemaVersion": 1,
+	"id": "big-items",
+	"version": "${version}",
+	"name": "Big Items API",
+	"description": "Allows Developers to make items take up more inventory space",
+	"authors": [
+		"Homak"
+	],
+	"license": "MIT",
+	"icon": "assets/big-items/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"silly.homak.bigitems.BigItemsAPI"
+		]
+	},
+	"mixins": [
+		"big-items.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.19.0",
+		"minecraft": "~1.21.1",
+		"java": ">=21",
+		"fabric-api": "*"
+	}
+}

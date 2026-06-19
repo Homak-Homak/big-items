@@ -1,0 +1,19 @@
+{
+	"required": true,
+	"package": "silly.homak.bigitems.mixin",
+	"compatibilityLevel": "JAVA_21",
+	"mixins": [
+		"ScreenHandlerMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	},
+	"overwrites": {
+		"requireAnnotations": true
+	},
+	"client": [
+		"HandledScreenMixin",
+		"makeItemsBig_DrawContextMixin",
+		"SpriteContentsAccessor"
+	]
+}
