@@ -8,7 +8,7 @@ import net.minecraft.screen.PlayerScreenHandler;
 import net.minecraft.util.Identifier;
 import silly.homak.bigitems.mixin.SpriteContentsAccessor;
 
-import java.awt.*;
+import java.awt.Color;
 
 public class TextureUtils {
 
@@ -49,35 +49,25 @@ public class TextureUtils {
 
         if (pixelCount == 0) return 0x7F000000;
 
-        int avgR = (int) (totalR / pixelCount);
-        int avgG = (int) (totalG / pixelCount);
-        int avgB = (int) (totalB / pixelCount);
-        int avgA = (int) (totalA / pixelCount);
-
-        return (avgA << 24) | (avgR << 16) | (avgG << 8) | avgB;
+        return ((int) (totalA / pixelCount) << 24) |
+                ((int) (totalR / pixelCount) << 16) |
+                ((int) (totalG / pixelCount) << 8)  |
+                (int) (totalB / pixelCount);
     }
 
     public static int darkenColor(int color, double factor) {
         factor = Math.clamp(factor, 0.0, 1.0);
 
         int a = (color >> 24) & 0xFF;
-        int r = (color >> 16) & 0xFF;
-        int g = (color >> 8) & 0xFF;
-        int b = color & 0xFF;
-
-        r = (int) (r * factor);
-        g = (int) (g * factor);
-        b = (int) (b * factor);
+        int r = (int) (((color >> 16) & 0xFF) * factor);
+        int g = (int) (((color >> 8) & 0xFF) * factor);
+        int b = (int) ((color & 0xFF) * factor);
 
         return (a << 24) | (r << 16) | (g << 8) | b;
     }
 
     public static int fadeColor(int color, double factor) {
-        int rgbOnly = color & 0x00FFFFFF;
-
-        int newAlpha = ((int) (factor * 255.0f)) << 24;
-
-        return newAlpha | rgbOnly;
+        return (((int) (factor * 255.0f)) << 24) | (color & 0x00FFFFFF);
     }
 
     public static int desaturateColor(int intColor, double factor) {
@@ -88,16 +78,8 @@ public class TextureUtils {
 
         float[] hsbValues = new float[3];
         Color.RGBtoHSB(r, g, b, hsbValues);
+        int rgbResult = Color.HSBtoRGB(hsbValues[0], (float) Math.max(0.0f, hsbValues[1] * factor), hsbValues[2]);
 
-        double currentSaturation = hsbValues[1];
-        double newSaturation = Math.max(0.0f, currentSaturation*factor);
-
-        int rgbResult = Color.HSBtoRGB(hsbValues[0], (float) newSaturation, hsbValues[2]);
-
-        if (alpha != 0) {
-            rgbResult = (rgbResult & 0x00FFFFFF) | (alpha << 24);
-        }
-
-        return rgbResult;
+        return alpha != 0 ? (rgbResult & 0x00FFFFFF) | (alpha << 24) : rgbResult;
     }
 }

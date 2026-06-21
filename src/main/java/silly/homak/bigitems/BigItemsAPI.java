@@ -1,7 +1,6 @@
 package silly.homak.bigitems;
 
 import net.fabricmc.api.ModInitializer;
-
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.item.Item;
@@ -23,6 +22,7 @@ public class BigItemsAPI implements ModInitializer {
 	public static Item BIG_ITEM;
 	public static Item SMALLER_ITEM;
 	public static Item COLORED_ITEM;
+
 	@Override
 	public void onInitialize() {
 		if (FabricLoader.getInstance().isDevelopmentEnvironment()) {

@@ -4,4 +4,5 @@ public class BooleanHolder {
     public static boolean bigItems$bypassScale = false;
     public static boolean bigItems$isRenderingShadow = false;
     public static boolean bigItems$isRenderingSlot = false;
+    public static boolean bigItems$isHotbarSlot = false;
 }

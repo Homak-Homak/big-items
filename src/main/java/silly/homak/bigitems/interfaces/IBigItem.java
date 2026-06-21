@@ -1,6 +1,5 @@
 package silly.homak.bigitems.interfaces;
 
-import jdk.jfr.Enabled;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.loader.api.FabricLoader;
@@ -10,16 +9,16 @@ import net.minecraft.item.ItemStack;
 import silly.homak.bigitems.util.BooleanHolder;
 
 public interface IBigItem {
-    // Implement this in your item class
 
-    // Has to return a 2-length array
+    // Has to return an array of 2 ints
     int[] getScale();
 
-    // Overrides the background color, if 0 uses the texture average
+    // Override this to set a custom background color
     default int getColor() {
         return 0;
     }
 
+    // Returns if the item is currently big or scaled down
     default boolean isScaled(ItemStack stack) {
         int[] scale = getScale();
         if (scale == null || scale.length < 2 || (scale[0] <= 1 && scale[1] <= 1)) {
@@ -36,7 +35,7 @@ public interface IBigItem {
     @Environment(EnvType.CLIENT)
     class ClientContext {
         private static boolean isCurrentlyScaled() {
-            MinecraftClient client = net.minecraft.client.MinecraftClient.getInstance();
+            MinecraftClient client = MinecraftClient.getInstance();
 
             if (client == null || client.currentScreen == null) {
                 return false;

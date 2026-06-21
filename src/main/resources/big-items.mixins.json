@@ -3,6 +3,7 @@
 	"package": "silly.homak.bigitems.mixin",
 	"compatibilityLevel": "JAVA_21",
 	"mixins": [
+		"PlayerInventoryMixin",
 		"ScreenHandlerMixin"
 	],
 	"injectors": {
